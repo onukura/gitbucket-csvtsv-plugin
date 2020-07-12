@@ -1,6 +1,6 @@
 # gitbucket-csvtsv-plugin
 
-[![Build Status](https://travis-ci.org/onukura/gitbucket-csvtsv-plugin.svg?branch=master)](https://travis-ci.org/onukura/gitbucket-csv-plugin)
+[![Build Status](https://travis-ci.org/onukura/gitbucket-csvtsv-plugin.svg?branch=master)](https://travis-ci.org/onukura/gitbucket-csvtsv-plugin)
 
 A GitBucket plugin for rendering csv file.  
 
