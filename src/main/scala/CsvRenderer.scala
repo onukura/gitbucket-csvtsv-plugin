@@ -68,7 +68,7 @@ class CsvRenderer extends Renderer {
     s"""
        |<link rel="stylesheet" type="text/css" href="$path/plugin-assets/csv/style.css">
        |<script src="$path/plugin-assets/csv/style.js"></script>
-       |<table class="csv-data">
+       |<table class="csv-table">
        |${thead.toString}
        |${tbody.toString}
        |</table>
