@@ -45,7 +45,7 @@ class CsvRenderer extends Renderer {
         thead_ += "<tr>"
         row.zipWithIndex.foreach{ case (v, rIndex) =>
           if (rIndex == 0) {
-            thead_ += s"""<td class="index">$cIndex</td>"""
+            thead_ += s"""<td class="index">${cIndex + 1}</td>"""
           } else {
             thead_ += s"""<th>$v</th>"""
           }
@@ -55,7 +55,7 @@ class CsvRenderer extends Renderer {
         tbody_ += "<tr>"
         row.zipWithIndex.foreach{ case (v, rIndex) =>
           if (rIndex == 0) {
-            tbody_ += s"""<td class="index">$cIndex</td>"""
+            tbody_ += s"""<td class="index">${cIndex + 1}</td>"""
           } else {
             tbody_ += s"""<td>$v</td>"""
           }
