@@ -45,25 +45,23 @@ class CsvRenderer extends Renderer {
     val thead_ = new StringBuilder
     val tbody_ = new StringBuilder
 
-    parsed.zipWithIndex.foreach{ case (row, cIndex) =>
-      if (cIndex == 0) {
+    parsed.zipWithIndex.foreach{ case (row, rIndex) =>
+      if (rIndex == 0) {
         thead_.append("<tr>")
-        row.zipWithIndex.foreach{ case (v, rIndex) =>
-          if (rIndex == 0) {
-            thead_.append(s"""<td class="index">${cIndex + 1}</td>""")
-          } else {
-            thead_.append(s"""<th>$v</th>""")
+        row.zipWithIndex.foreach{ case (v, cIndex) =>
+          if (cIndex == 0) {
+            thead_.append(s"""<td class="index">${rIndex + 1}</td>""")
           }
+          thead_.append(s"""<th>$v</th>""")
         }
         thead_.append("</tr>")
       } else {
         tbody_.append("<tr>")
-        row.zipWithIndex.foreach{ case (v, rIndex) =>
-          if (rIndex == 0) {
-            tbody_.append(s"""<td class="index">${cIndex + 1}</td>""")
-          } else {
-            tbody_.append(s"""<td>$v</td>""")
+        row.zipWithIndex.foreach{ case (v, cIndex) =>
+          if (cIndex == 0) {
+            tbody_.append(s"""<td class="index">${rIndex + 1}</td>""")
           }
+          tbody_.append(s"""<td>$v</td>""")
         }
         tbody_.append("</tr>")
       }

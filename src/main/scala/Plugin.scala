@@ -7,9 +7,9 @@ import io.github.gitbucket.solidbase.model.Version
 import scala.util.Try
 
 class Plugin extends gitbucket.core.plugin.Plugin {
-  override val pluginId: String = "Smiles"
-  override val pluginName: String = "Smiles renderer Plugin"
-  override val description: String = "Rendering Smiles files."
+  override val pluginId: String = "csvtsv"
+  override val pluginName: String = "csv tsv renderer Plugin"
+  override val description: String = "Rendering csv and tsv files."
   override val versions: List[Version] = List(
     new Version("1.0.0"),
   )
