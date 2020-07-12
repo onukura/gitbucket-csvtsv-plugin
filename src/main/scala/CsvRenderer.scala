@@ -1,10 +1,9 @@
 import gitbucket.core.controller.Context
 import gitbucket.core.plugin.{RenderRequest, Renderer}
-
-import scala.util.parsing.combinator._
 import play.twirl.api.Html
 
 import scala.util.matching.Regex
+import scala.util.parsing.combinator._
 
 class CsvParser extends RegexParsers {
   override val skipWhitespace = false
@@ -33,28 +32,26 @@ class CsvRenderer extends Renderer {
     val tbody_ = new StringBuilder
 
     parsed.zipWithIndex.foreach{ case (row, cIndex) =>
-      if (row.nonEmpty) {
-        if (cIndex == 0) {
-          thead_.append("<tr>")
-          row.zipWithIndex.foreach{ case (v, rIndex) =>
-            if (rIndex == 0) {
-              thead_.append(s"""<td class="index">${cIndex + 1}</td>""")
-            } else {
-              thead_.append(s"""<th>$v</th>""")
-            }
+      if (cIndex == 0) {
+        thead_.append("<tr>")
+        row.zipWithIndex.foreach{ case (v, rIndex) =>
+          if (rIndex == 0) {
+            thead_.append(s"""<td class="index">${cIndex + 1}</td>""")
+          } else {
+            thead_.append(s"""<th>$v</th>""")
           }
-          thead_.append("</tr>")
-        } else {
-          tbody_.append("<tr>")
-          row.zipWithIndex.foreach{ case (v, rIndex) =>
-            if (rIndex == 0) {
-              tbody_.append(s"""<td class="index">${cIndex + 1}</td>""")
-            } else {
-              tbody_.append(s"""<td>$v</td>""")
-            }
-          }
-          tbody_.append("</tr>")
         }
+        thead_.append("</tr>")
+      } else {
+        tbody_.append("<tr>")
+        row.zipWithIndex.foreach{ case (v, rIndex) =>
+          if (rIndex == 0) {
+            tbody_.append(s"""<td class="index">${cIndex + 1}</td>""")
+          } else {
+            tbody_.append(s"""<td>$v</td>""")
+          }
+        }
+        tbody_.append("</tr>")
       }
     }
 
