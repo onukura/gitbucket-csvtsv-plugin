@@ -1,5 +1,5 @@
 import javax.servlet.ServletContext
-import gitbucket.core.plugin.{PluginRegistry}
+import gitbucket.core.plugin.PluginRegistry
 import gitbucket.core.service.SystemSettingsService
 import gitbucket.core.service.SystemSettingsService.SystemSettings
 import io.github.gitbucket.solidbase.model.Version
