@@ -30,3 +30,9 @@ sbt assembly
 This makes the assembly package
 `target/scala-2.13/gitbucket-csvtsv-plugin-{plugin-version}.jar`
 for deployment.
+
+## Version
+
+Plugin version|GitBucket version
+:---|:---
+1.0.x |4.32.x -
