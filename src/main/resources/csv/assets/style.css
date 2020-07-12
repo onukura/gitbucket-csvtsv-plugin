@@ -39,7 +39,7 @@ div.box-content-bottom.markdown-body table {
     border: 0;
 }
 
-.csv-table td, .csv-data th {
+.csv-table td, .csv-table th {
     overflow-x: hidden;
     overflow-y: hidden;
     font-size: 12px;
