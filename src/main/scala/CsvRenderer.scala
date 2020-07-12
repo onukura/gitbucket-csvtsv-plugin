@@ -1,5 +1,6 @@
 import gitbucket.core.controller.Context
 import gitbucket.core.plugin.{RenderRequest, Renderer}
+import gitbucket.core.util.FileUtil
 import play.twirl.api.Html
 
 import scala.util.matching.Regex
@@ -17,16 +18,29 @@ class CsvParser extends RegexParsers {
   def parse( input: String): ParseResult[List[List[String]]] = parseAll( lines, input )
 }
 
+class TsvParser extends CsvParser {
+  override def normalField: Regex = "[^\t\r\n]*".r  // field without double quotes
+  override def fields: Parser[List[String]] = repsep( quoteField | normalField, "\t" )  // single row
+}
+
 class CsvRenderer extends Renderer {
 
   def render(request: RenderRequest): Html = {
     import request._
-    Html(toHtml(fileContent)(context))
+    Html(toHtml(filePath, fileContent)(context))
   }
 
-  def toHtml(fileContent: String)(implicit context: Context): String = {
+  def toHtml(filePath: List[String], fileContent: String)(implicit context: Context): String = {
     val path = context.baseUrl
-    val parsed = new CsvParser().parse(fileContent).get
+    val basename = filePath.last
+    val ext = FileUtil.getExtension(basename.toLowerCase)
+
+    var parsed: List[List[String]] = Nil
+    if ( ext == "csv" ) {
+      parsed = new CsvParser().parse(fileContent).get
+    } else if ( ext == "tsv" ) {
+      parsed = new TsvParser().parse(fileContent).get
+    }
 
     val thead_ = new StringBuilder
     val tbody_ = new StringBuilder

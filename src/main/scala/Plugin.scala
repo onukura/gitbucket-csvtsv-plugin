@@ -20,6 +20,7 @@ class Plugin extends gitbucket.core.plugin.Plugin {
     val test = Try{ new CsvRenderer() }
     val csv = test.get
     registry.addRenderer("csv", csv)
+    registry.addRenderer("tsv", csv)
     renderer = Option(csv)
     super.initialize(registry, context, settings)
   }
