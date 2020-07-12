@@ -27,9 +27,8 @@ div.box-content-bottom.markdown-body table {
 }
 
 .csv-data .index {
-    width: 1%;
+    width: 2%;
     min-width: 20px;
-    padding: 10px 8px 9px;
     padding-top: 10px;
     padding-right: 8px;
     padding-bottom: 9px;
