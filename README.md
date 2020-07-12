@@ -1,12 +1,12 @@
-# gitbucket-csv-plugin
+# gitbucket-csvtsv-plugin
 
-[![Build Status](https://travis-ci.org/onukura/gitbucket-csv-plugin.svg?branch=master)](https://travis-ci.org/onukura/gitbucket-csv-plugin)
+[![Build Status](https://travis-ci.org/onukura/gitbucket-csvtsv-plugin.svg?branch=master)](https://travis-ci.org/onukura/gitbucket-csv-plugin)
 
 A GitBucket plugin for rendering csv file.  
 
 ## Screenshot
 
-![screenshot](https://github.com/onukura/gitbucket-csv-plugin/blob/assets/screenshot.png?raw=true)
+![screenshot](https://github.com/onukura/gitbucket-csvtsv-plugin/blob/assets/screenshot.png?raw=true)
 
 ## Install
 
@@ -21,12 +21,12 @@ sbt clean package
 ```
 
 The built package is located at
-`target/scala-2.13/gitbucket-csv-plugin_2.13-{plugin-version}.jar`.
+`target/scala-2.13/gitbucket-csvtsv-plugin_2.13-{plugin-version}.jar`.
 
 ```sbt
 sbt assembly
 ```
 
 This makes the assembly package
-`target/scala-2.13/gitbucket-csv-plugin-{plugin-version}.jar`
+`target/scala-2.13/gitbucket-csvtsv-plugin-{plugin-version}.jar`
 for deployment.
