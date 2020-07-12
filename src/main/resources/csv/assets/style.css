@@ -1,0 +1,50 @@
+div.box-content-bottom.markdown-body {
+    background-color: transparent;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    overflow: auto;
+}
+
+div.box-content-bottom.markdown-body table {
+    border-collapse: collapse;
+    border-width: 0;
+    margin-bottom: 0px;
+}
+
+.csv-data {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    border-spacing; 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.csv-data .index {
+    width: 1%;
+    min-width: 20px;
+    padding: 10px 8px 9px;
+    padding-top: 10px;
+    padding-right: 8px;
+    padding-bottom: 9px;
+    padding-left: 8px;
+    text-align: right;
+    background: #FFFFFF;
+    color: #a9a9a9;
+    border: 0;
+}
+
+.csv-data td, .csv-data th {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 12px;
+    line-height: 1;
+    text-align: left;
+    white-space: nowrap;
+}
