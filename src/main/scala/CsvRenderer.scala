@@ -5,6 +5,7 @@ import play.twirl.api.Html
 
 import scala.util.matching.Regex
 import scala.util.parsing.combinator._
+import scala.util.{Failure, Success, Try}
 
 class CsvParser extends RegexParsers {
   override val skipWhitespace = false
@@ -27,7 +28,10 @@ class CsvRenderer extends Renderer {
 
   def render(request: RenderRequest): Html = {
     import request._
-    Html(toHtml(filePath, fileContent)(context))
+    Html(Try(toHtml(filePath, fileContent)(context)) match {
+      case Success(v) => v
+      case Failure(e) => s"""<h2>Error</h2><div><pre>$e</pre></div>"""
+    })
   }
 
   def toHtml(filePath: List[String], fileContent: String)(implicit context: Context): String = {
@@ -49,8 +53,8 @@ class CsvRenderer extends Renderer {
     if (parsed.length > maxRowToRender) {
       return (
         s"""
-          |<link rel="stylesheet" type="text/css" href="$path/plugin-assets/csv/style-oversize.css">
-          |<div id='csv-oversize'>Sorry. This file is too big to render.</div>
+          |<h2>Oversize</h2>
+          |<div><pre>Sorry. This file is too big to render.</pre></div>
           |""".stripMargin
       )
     }
