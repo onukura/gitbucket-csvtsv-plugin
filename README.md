@@ -31,6 +31,10 @@ This makes the assembly package
 `target/scala-2.13/gitbucket-csvtsv-plugin-{plugin-version}.jar`
 for deployment.
 
+## Note
+
+Currently, files with more than **3000** rows will not be rendered because of html rendering performance.
+
 ## Version
 
 Plugin version|GitBucket version
