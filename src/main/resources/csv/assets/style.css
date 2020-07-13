@@ -1,4 +1,4 @@
-div.box-content-bottom.markdown-body {
+div.markdown-body {
     background-color: transparent;
     padding-top: 0px;
     padding-right: 0px;
@@ -7,7 +7,7 @@ div.box-content-bottom.markdown-body {
     overflow: auto;
 }
 
-div.box-content-bottom.markdown-body table {
+div.markdown-body table {
     border-collapse: collapse;
     border-width: 0;
     margin-bottom: 0px;
@@ -22,8 +22,6 @@ div.box-content-bottom.markdown-body table {
     border-bottom-right-radius: 0px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 .csv-table .index {
