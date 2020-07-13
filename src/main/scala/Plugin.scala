@@ -12,6 +12,7 @@ class Plugin extends gitbucket.core.plugin.Plugin {
   override val description: String = "Rendering csv and tsv files."
   override val versions: List[Version] = List(
     new Version("1.0.0"),
+    new Version("1.0.1"),
   )
 
   private[this] var renderer: Option[CsvRenderer] = None
