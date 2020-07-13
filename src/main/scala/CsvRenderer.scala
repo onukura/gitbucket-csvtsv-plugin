@@ -45,6 +45,16 @@ class CsvRenderer extends Renderer {
     val thead_ = new StringBuilder
     val tbody_ = new StringBuilder
 
+    val maxRowToRender = 3000
+    if (parsed.length > maxRowToRender) {
+      return (
+        s"""
+          |<link rel="stylesheet" type="text/css" href="$path/plugin-assets/csv/style-oversize.css">
+          |<div id='csv-oversize'>Sorry. This file is too big to render.</div>
+          |""".stripMargin
+      )
+    }
+
     parsed.zipWithIndex.foreach{ case (row, rIndex) =>
       if (rIndex == 0) {
         thead_.append("<tr>")
