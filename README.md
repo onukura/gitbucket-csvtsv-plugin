@@ -31,6 +31,26 @@ This makes the assembly package
 `target/scala-2.13/gitbucket-csvtsv-plugin-{plugin-version}.jar`
 for deployment.
 
+## Supported type
+
+Delimiter : `,`, `\t`.  
+Quote : with quote `"`, without quote, mix.
+
+#### Example
+
+- input
+  
+  ```
+  "a",b,"c","de,f",ge"h
+  1, 2, 3, 4, 5
+  ```
+
+- output
+
+  | a | b | c | de,f | ge"h |
+  | --- | --- | --- | --- | --- |
+  | 1 | 2 | 3 | 4 | 5 |
+
 ## Note
 
 Currently, files with more than **3000** rows will not be rendered because of html rendering performance.
