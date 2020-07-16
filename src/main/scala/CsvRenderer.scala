@@ -34,16 +34,25 @@ class CsvRenderer extends Renderer {
     })
   }
 
+  def parse(content: String, ext: String): List[List[String]] = {
+    if ( ext == "csv" ) {
+      new CsvParser().parse(content).get
+    } else {
+      new TsvParser().parse(content).get
+    }
+  }
+
   def toHtml(filePath: List[String], fileContent: String)(implicit context: Context): String = {
     val path = context.baseUrl
     val basename = filePath.last
     val ext = FileUtil.getExtension(basename.toLowerCase)
 
-    var parsed: List[List[String]] = Nil
-    if ( ext == "csv" ) {
-      parsed = new CsvParser().parse(fileContent).get
-    } else if ( ext == "tsv" ) {
-      parsed = new TsvParser().parse(fileContent).get
+    val parsed: List[List[String]] = Try(parse(fileContent, ext)) match {
+      case Success(v) => v
+      case Failure(e) =>
+        return s"""
+           |<pre class="prettyprint linenums blob" style="">$fileContent</pre>
+           |""".stripMargin
     }
 
     val thead_ = new StringBuilder
