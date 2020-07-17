@@ -6,6 +6,7 @@ import play.twirl.api.Html
 import scala.util.matching.Regex
 import scala.util.parsing.combinator._
 import scala.util.{Failure, Success, Try}
+import scala.math.ceil
 
 class CsvParser extends RegexParsers {
   override val skipWhitespace = false
@@ -42,10 +43,25 @@ class CsvRenderer extends Renderer {
     }
   }
 
+  def getKByteSize(content: String): Double = {
+    8 * ceil(((content.length * 2.0) + 45.0) / 8.0) / 1024
+  }
+
   def toHtml(filePath: List[String], fileContent: String)(implicit context: Context): String = {
     val path = context.baseUrl
     val basename = filePath.last
     val ext = FileUtil.getExtension(basename.toLowerCase)
+
+    val ContentSize = getKByteSize(fileContent)
+    val maxSizeToRender = 512
+    if (ContentSize > maxSizeToRender) {
+      return (
+        s"""
+           |<h2>Oversize</h2>
+           |<div><pre>Sorry. This file is too big to render.</pre></div>
+           |""".stripMargin
+        )
+    }
 
     val parsed: List[List[String]] = Try(parse(fileContent, ext)) match {
       case Success(v) => v
@@ -57,16 +73,6 @@ class CsvRenderer extends Renderer {
 
     val thead_ = new StringBuilder
     val tbody_ = new StringBuilder
-
-    val maxRowToRender = 3000
-    if (parsed.length > maxRowToRender) {
-      return (
-        s"""
-          |<h2>Oversize</h2>
-          |<div><pre>Sorry. This file is too big to render.</pre></div>
-          |""".stripMargin
-      )
-    }
 
     parsed.zipWithIndex.foreach{ case (row, rIndex) =>
       if (rIndex == 0) {
