@@ -1,6 +1,6 @@
 name := "gitbucket-csvtsv-plugin"
 organization := "io.github.gitbucket"
-version := "1.0.3"
+version := "1.0.4"
 scalaVersion := "2.13.0"
 gitbucketVersion := "4.32.0"
 
