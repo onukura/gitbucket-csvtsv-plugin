@@ -55,15 +55,22 @@ class CsvRenderer extends Renderer {
     val ContentSize = getKByteSize(fileContent)
     val maxSizeToRender = 512
     if (ContentSize > maxSizeToRender) {
-      return (
-        s"""
-           |<h2>Oversize</h2>
-           |<div><pre>Sorry. This file is too big to render.</pre></div>
-           |""".stripMargin
-        )
+      return s"""
+         |<h2>Oversize</h2>
+         |<div><pre>Sorry. This file is too big to render.</pre></div>
+         |""".stripMargin
     }
 
-    val parsed: List[List[String]] = Try(parse(fileContent, ext)) match {
+    val content = fileContent.trim()
+
+    if (content == "") {
+      return s"""
+         |<h2>Empty</h2>
+         |<div><pre>Sorry. This file is empty.</pre></div>
+         |""".stripMargin
+    }
+
+    val parsed: List[List[String]] = Try(parse(content, ext)) match {
       case Success(v) => v
       case Failure(e) =>
         return s"""
