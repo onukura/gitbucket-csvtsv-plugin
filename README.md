@@ -53,7 +53,7 @@ Quote : with quote `"`, without quote, mix.
 
 ## Note
 
-Currently, files with more than **3000** rows will not be rendered because of html rendering performance.
+Large (> about 512kb) files will not be rendered for browser performance.
 
 ## Version
 
