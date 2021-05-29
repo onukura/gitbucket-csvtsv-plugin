@@ -2,37 +2,28 @@ div.markdown-body {
     max-height: 600px;
     width: 100%;
     background-color: transparent;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
+    padding: 0;
     overflow: auto;
 }
 
 div.markdown-body table {
     border-collapse: collapse;
     border-width: 0;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .csv-table {
     width: 100%;
     border-collapse: collapse;
     background-color: transparent;
-    border-spacing; 0;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-spacing: 0;
+    border-radius: 0;
 }
 
 .csv-table .index {
     width: 2%;
     min-width: 20px;
-    padding-top: 10px;
-    padding-right: 8px;
-    padding-bottom: 9px;
-    padding-left: 8px;
+    padding: 10px 8px 9px;
     text-align: right;
     background: #FFFFFF;
     color: #a9a9a9;
